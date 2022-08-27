@@ -21,7 +21,7 @@ class Url(BaseModel):
             ),
             models.Index(
                 fields=[
-                    "short_url",
+                    "key",
                 ]
             ),
             models.Index(

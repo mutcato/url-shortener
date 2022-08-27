@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine
+    restart: on-failure:5
+    env_file:
+      - ./.env
+    volumes:
+      - urlshortener_db:/tmp/pgdata
+    ports:
+      - "5432:5432"
+
+volumes:
+    urlshortener_db:

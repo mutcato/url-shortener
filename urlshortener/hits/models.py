@@ -1,6 +1,7 @@
-from base.models import BaseModel
 from django.db import models
 from django.utils.translation import gettext as _
+
+from base.models import BaseModel
 
 
 class Hit(BaseModel):

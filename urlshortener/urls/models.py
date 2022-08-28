@@ -7,9 +7,7 @@ from base.models import BaseModel
 class Url(BaseModel):
     long_url = models.URLField(max_length=512)
     key = models.CharField(max_length=7, unique=True)
-    user_id = (
-        models.PositiveIntegerField()
-    )  # Probably will come from user service or auth service
+    hit = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = _("url")
@@ -18,16 +16,6 @@ class Url(BaseModel):
             models.Index(
                 fields=[
                     "long_url",
-                ]
-            ),
-            models.Index(
-                fields=[
-                    "key",
-                ]
-            ),
-            models.Index(
-                fields=[
-                    "user_id",
                 ]
             ),
         ]

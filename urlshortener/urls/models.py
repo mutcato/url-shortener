@@ -5,7 +5,7 @@ from base.models import BaseModel
 
 
 class Url(BaseModel):
-    long_url = models.CharField(max_length=512)
+    long_url = models.URLField(max_length=512)
     key = models.CharField(max_length=7, unique=True)
     user_id = (
         models.PositiveIntegerField()

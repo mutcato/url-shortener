@@ -7,6 +7,17 @@ from urls.models import Url
 from urls.serializers import UrlSerializer
 
 
+class URLViewSet(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet,
+):
+    queryset = Url.objects.all()
+    serializer_class = UrlSerializer
+    lookup_field = "key"
+
+
 def redirect_view(request, key):
     object = get_object_or_404(Url, key=key)
     object.hit = F("hit") + 1

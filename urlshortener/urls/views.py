@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_page
 from rest_framework import mixins, viewsets
-from rest_framework.decorators import action
 
 from urls.models import Url
 from urls.serializers import UrlSerializer

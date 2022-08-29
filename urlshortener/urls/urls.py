@@ -7,7 +7,7 @@ from urls.views import URLViewSet
 urlpatterns = [
     path(
         "urls",
-        URLViewSet.as_view({"get": "retrieve", "post": "create"}),
+        URLViewSet.as_view({"get": "list", "post": "create"}),
         name="urls",
     ),
     path(

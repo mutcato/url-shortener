@@ -1,5 +1,3 @@
-from unittest import result
-
 from django.test import TestCase
 from model_bakery import baker
 
@@ -35,3 +33,13 @@ class UrlWiewsetTestCase(TestCase):
         self.assertEqual(result["key"], url.key)
         self.assertEqual(result["long_url"], url.long_url)
         self.assertEqual(result["hit"], url.hit)
+
+    def test_list_urls(self):
+        urls = []
+        for _ in range(9):
+            urls.append(baker.make("urls.Url"))
+
+        response = self.client.get(self.viewset_endpoint)
+        self.assertEqual(response.status_code, 200)
+        result = response.json()
+        self.assertEqual(len(urls), len(result))

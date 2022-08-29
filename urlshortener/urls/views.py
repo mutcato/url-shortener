@@ -1,5 +1,7 @@
-from django.db.models import Count, F
-from django.shortcuts import get_object_or_404, redirect
+from django.db.models import F
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_page
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 
@@ -17,9 +19,9 @@ class URLViewSet(
     serializer_class = UrlSerializer
     lookup_field = "key"
 
-
+@cache_page(60*60)
 def redirect_view(request, key):
     object = get_object_or_404(Url, key=key)
     object.hit = F("hit") + 1
     object.save()
-    return redirect(f"/{object.key}")
+    return HttpResponseRedirect(f"{object.long_url}")

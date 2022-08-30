@@ -19,7 +19,7 @@ class UrlWiewsetTestCase(TestCase):
         new_hit = url.hit
         self.assertEqual((new_hit - old_hit), 1)
 
-    @mock.patch("urls.service.UrlService.get_key")
+    @mock.patch("urls.service.UrlService._get_key")
     def test_create_url(self, get_key_mock):
         get_key_mock.return_value = "XXX"
         payload = {"long_url": "https://example.com/some/example/path"}

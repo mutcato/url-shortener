@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from urls.models import Url
 from urls.service import UrlService
 
@@ -9,7 +8,6 @@ class UrlSerializer(serializers.ModelSerializer):
         model = Url
         fields = ("key", "long_url", "hit", "created_at")
         read_only_fields = ("hit", "created_at")
-
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)

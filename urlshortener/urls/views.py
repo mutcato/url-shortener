@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_page
 from rest_framework import mixins, viewsets
-
 from urls.models import Url
 from urls.serializers import UrlSerializer
 
@@ -18,7 +17,8 @@ class URLViewSet(
     serializer_class = UrlSerializer
     lookup_field = "key"
 
-@cache_page(60*60)
+
+@cache_page(60 * 60)
 def redirect_view(request, key):
     object = get_object_or_404(Url, key=key)
     object.hit = F("hit") + 1

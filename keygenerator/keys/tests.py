@@ -1,5 +1,4 @@
 from django.test import TestCase
-
 from keys.tasks import generate_keys
 
 

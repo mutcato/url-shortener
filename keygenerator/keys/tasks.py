@@ -1,5 +1,6 @@
-from keygenerator.celery import app
 from keys.models import Key
+
+from keygenerator.celery import app
 
 BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

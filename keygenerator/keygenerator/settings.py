@@ -105,7 +105,9 @@ DATABASES = {
 }
 
 CELERY_BROKER_URL = env("CELERY_BROKER", default="redis://127.0.0.1:6379/1")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", default="redis://127.0.0.1:6379/1")
+CELERY_RESULT_BACKEND = os.environ.get(
+    "CELERY_BROKER", default="redis://127.0.0.1:6379/1"
+)
 
 CELERYBEAT_SCHEDULE = {
     "generate_keys": {

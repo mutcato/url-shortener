@@ -112,7 +112,7 @@ CELERY_RESULT_BACKEND = os.environ.get(
 CELERYBEAT_SCHEDULE = {
     "generate_keys": {
         "task": "keys.tasks.generate_keys",
-        "schedule": 60,  # every hour
+        "schedule": 60,  # every minute
     }
 }
 

@@ -97,6 +97,15 @@ DATABASES = {
     }
 }
 
+CELERY_BROKER_URL = env("CELERY_BROKER", default="redis://redis:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", default="redis://redis:6379/0")
+
+CELERYBEAT_SCHEDULE = {
+    "generate_keys": {
+        "task": "keys.tasks.generate_keys",
+        "schedule": 60 * 60,  # every hour
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

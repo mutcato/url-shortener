@@ -1,4 +1,6 @@
 from keys.models import Key
+from keygenerator.celery import app
+
 
 BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -30,6 +32,9 @@ def get_next_id() -> int:
         return 100_000_000  # ID starts from
 
 
+@app.task
 def generate_keys(number: int = 10) -> None:
-    for _ in range(number):
-        Key.objects.create(key=encode(get_next_id(), BASE62))
+    number_of_unused_keys = Key.objects.filter(is_used=False).count()
+    if number_of_unused_keys < 10000:
+        for _ in range(number):
+            Key.objects.create(key=encode(get_next_id(), BASE62))

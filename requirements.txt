@@ -4,3 +4,4 @@ psycopg2-binary==2.9.3
 django-environ==0.9.0
 model-bakery==1.7.0
 django-redis==5.0.0
+celery==5.2.7

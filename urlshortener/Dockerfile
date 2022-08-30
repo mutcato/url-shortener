@@ -16,6 +16,8 @@ RUN pip install -r requirements.txt
 
 FROM dev
 
+EXPOSE 8000
+
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 

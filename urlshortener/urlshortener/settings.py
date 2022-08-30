@@ -36,7 +36,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["keygenerator", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -147,3 +147,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+KEYGENERATOR_SERVER = env("KEYGENERATOR_SERVER", default="http://localhost:8001")
+KEYGENERATOR_ENDPOINT = env("KEYGENERATOR_ENDPOINT", default="keys")

@@ -1,9 +1,11 @@
 import random
-import string
+import requests
+from django.conf import settings
 
 
 class UrlService:
     def get_key(self):
-        letters = string.ascii_letters + "0123456789"
-        result_str = "".join(random.choice(letters) for _ in range(7))
-        return result_str
+        response = requests.get(f"http://keygenerator:8000/keys")
+        assert response.status_code == 200
+        
+        return response.json()["key"]

@@ -36,7 +36,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["keygenerator", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -84,6 +84,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "keygenerator.wsgi.application"
 
+"""
+TODO: 
+prod.env oluştur. docker-compose enf_file'ı oradan alsın
+urlshortener servisini de dockerize et
+url_shortener.service.get_key methodunu değiştir. keygenerator servisine /keys endpointine GET atarak alsın
+admin.py ları sil
+"""
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

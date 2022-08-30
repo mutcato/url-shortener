@@ -1,5 +1,6 @@
 import requests
 
+
 class UrlService:
     def get_key(self):
         response = requests.get(f"http://keygenerator:8000/keys")

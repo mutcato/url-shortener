@@ -91,19 +91,19 @@ WSGI_APPLICATION = "keygenerator.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": "0.0.0.0",
+        "HOST": "db",
         "NAME": env("POSTGRES_DB"),
         "USER": env("POSTGRES_USER"),
     }
 }
 
-CELERY_BROKER_URL = env("CELERY_BROKER", default="redis://redis:6379/0")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", default="redis://redis:6379/0")
+CELERY_BROKER_URL = env("CELERY_BROKER", default="redis://redis:6379/1")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", default="redis://redis:6379/1")
 
 CELERYBEAT_SCHEDULE = {
     "generate_keys": {
         "task": "keys.tasks.generate_keys",
-        "schedule": 60 * 60,  # every hour
+        "schedule": 60,  # every hour
     }
 }
 

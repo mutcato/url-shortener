@@ -91,7 +91,7 @@ WSGI_APPLICATION = "urlshortener.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": "0.0.0.0",
+        "HOST": env("POSTGRES_HOST", default="0.0.0.0"),
         "NAME": env("POSTGRES_DB"),
         "USER": env("POSTGRES_USER"),
     }
@@ -100,7 +100,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env("CACHE_BACKEND_URL"),
+        "LOCATION": env("CACHE_BACKEND_URL", default="redis://127.0.0.1:6379/0"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
